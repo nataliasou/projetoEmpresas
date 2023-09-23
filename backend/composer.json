@@ -1,0 +1,17 @@
+{
+    "name": "souna/backend",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "nataliasou",
+            "email": "natalia-souza@outlook.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.8"
+    }
+}

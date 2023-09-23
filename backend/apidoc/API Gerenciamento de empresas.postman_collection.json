@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "2e31ef11-4d87-47ea-9c69-cf5bba7200f1",
+		"name": "API Gerenciamento de empresas",
+		"description": "Essa API faz o gerenciamento básico de empresas, cadastra, deleta, atualiza e retornar os cadastros das empresas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29946698"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Gerar token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"julio@julio.com\",\r\n    \"senha\": \"senhaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"auth"
+							]
+						},
+						"description": "Nessa reuisição é retornado um token que será utilizado para verificar se é um usuário autenticado e dar permissão nas outras rotas."
+					},
+					"response": []
+				},
+				{
+					"name": "Novo usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Julio\",\r\n    \"email\": \"julio@julio.com\",\r\n    \"senha\": \"senhaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/auth/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"auth",
+								"usuario"
+							]
+						},
+						"description": "Nessa requisição é feito o cadastro de um novo usuário."
+					},
+					"response": []
+				}
+			],
+			"description": "Nessas requisições são feitas a geração de token e criação de um novo usuário."
+		},
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "Cadastrar empresa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1bGlvQGp1bGlvLmNvbSJ9.9ZsILONJ7jt1D6panl9_3_vstell9OC8q3K0H7X5wxY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Empresa com foto",
+									"type": "text"
+								},
+								{
+									"key": "cnpj",
+									"value": "99932717000139",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "Rua da empresa 1",
+									"type": "text"
+								},
+								{
+									"key": "telefone",
+									"value": "6291915678",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "empresa1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "site",
+									"value": "www.empresa1.com",
+									"type": "text"
+								},
+								{
+									"key": "proprietario",
+									"value": "João",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/souna/Downloads/nike-logo-black-clothes-design-icon-abstract-football-illustration-with-white-background-free-vector.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/empresas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"empresas"
+							]
+						},
+						"description": "Nessa requisição é feito o cadastro de uma nova empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Retornar todas as empresas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "ergdgdfg.eyJlbWFpbCI6Im5hQJkiJWlsLmNvbSJ9.XNfdC-ti56q8B9fDXLF8OIA9iLYNLWgl_QmwlStn7mo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/empresas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"empresas"
+							]
+						},
+						"description": "Essa requisição retorna todas as empresas cadastradas."
+					},
+					"response": []
+				},
+				{
+					"name": "Retornar empresa específica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1bGlvQGp1bGlvLmNvbSJ9.9ZsILONJ7jt1D6panl9_3_vstell9OC8q3K0H7X5wxY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/empresas/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"empresas",
+								"10"
+							]
+						},
+						"description": "Essa requisição retorna os dados de uma empresa específica"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar dados de uma empresa específica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1bGlvQGp1bGlvLmNvbSJ9.9ZsILONJ7jt1D6panl9_3_vstell9OC8q3K0H7X5wxY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Empresa 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/empresas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"empresas",
+								"4"
+							]
+						},
+						"description": "Essa requisição atualiza os dados de uma empresa específica."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar empresa específica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1bGlvQGp1bGlvLmNvbSJ9.9ZsILONJ7jt1D6panl9_3_vstell9OC8q3K0H7X5wxY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/empresas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"empresas",
+								"4"
+							]
+						},
+						"description": "Essa requisição deleta os dados de uma empresa específica."
+					},
+					"response": []
+				},
+				{
+					"name": "Retorna Foto da empresa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1bGlvQGp1bGlvLmNvbSJ9.9ZsILONJ7jt1D6panl9_3_vstell9OC8q3K0H7X5wxY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/projetoEmpresas/backend/public/empresas/12/foto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"projetoEmpresas",
+								"backend",
+								"public",
+								"empresas",
+								"12",
+								"foto"
+							]
+						},
+						"description": "Essa requisição retorna a foto de uma empresa específica."
+					},
+					"response": []
+				}
+			],
+			"description": "Nessas requisições são feitos a manipulação dos dados da empresa."
+		}
+	]
+}
