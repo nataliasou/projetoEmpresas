@@ -1,0 +1,20 @@
+CREATE TABLE empresas(
+	empresas_id serial primary key,
+	nome character varying(200) not null,
+	cnpj character varying(14) not null,
+	endereco character varying(200),
+	telefone character varying(11),
+	email character varying(100),
+	site character varying(100),
+	proprietario character varying(200) not null,
+	data_registro date not null default current_date,
+	foto bytea
+)
+
+
+CREATE TABLE usuario(
+	usuario_id serial primary key,
+	nome character varying(200) not null,
+	email character varying(100),
+	senha character varying(100)
+)
