@@ -42,13 +42,60 @@ $ http://localhost/projetoEmpresas/backend/public/
 A documentação da API está disponibilizada, assim como a collection para ser testada no postman, você vai encontrar isso na pasta APIDoc.
 
 
+### Features Frontend
+
+- [x] Login
+- [ ] Cadastro de novo usuário
+- [x] Cadastro de uma nova empresa
+- [x] Atualização de cadastro da empresa
+- [x] Deletar cadastro de uma empresa
+- [x] Retornar dados de uma empresa específica
+- [x] Retornar todas as empresas cadastradas
+- [ ] Autenticação a cada rota pelo frontend
+
+
+### Pré-requisitos
+
+Para começar, com o backend já funcionando, você precisa ter instalado também na sua máquina as seguintes ferramentas:
+[npm](https://www.npmjs.com/package/npx), [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable), [node](https://nodejs.org/en),
+[npx](https://www.npmjs.com/package/npx). 
+
+### 🎲 Rodando o Frontend 
+
+```bash
+# Pode ser necessário instalar
+$ yarn add react-router-dom@6
+$ yarn add @mui/material @emotion/react @emotion/styled
+$ yarn add @mui/icons-material
+$ yarn add axios
+$ yarn add @unform/web @unform/core
+$ yarn add yup
+$ yarn add js-cookie
+$ yarn install
+
+# Pronto o Frontend estará funcionando normalmente
+$ yarn start
+```
+
+No backend foi comentado a parte de autorização pois o login do frontend não está completo.
+
+
 
 ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- PHP
+- [npm](https://www.npmjs.com/package/npx)
+- [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+- [node](https://nodejs.org/en)
+- [npx](https://www.npmjs.com/package/npx)
+- [MUI](https://mui.com/material-ui/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://axios-http.com/)
+- [PHP](https://www.php.net/)
 - [Git](https://git-scm.com)
 - [Composer](https://getcomposer.org/download/)
 - [Postgresql](https://www.postgresql.org/download/)
 - [VSCode](https://code.visualstudio.com/)
+
+

@@ -25,7 +25,7 @@ class Auth extends Controller
                 ];
 
                 $result = [
-                    'token' => JWT::encode($payload, $this->jwt, 'HS256')
+                    'accessToken' => JWT::encode($payload, $this->jwt, 'HS256')
                 ];
 
                 echo json_encode($result);

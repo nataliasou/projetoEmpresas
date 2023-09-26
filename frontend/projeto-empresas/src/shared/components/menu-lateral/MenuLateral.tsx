@@ -3,15 +3,18 @@ import ListItemText from '@mui/material/ListItemText';
 import { Avatar, Divider, Drawer, useTheme, ListItemButton, useMediaQuery } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Box } from '@mui/system';
-import { useDrawerContext } from '../../contexts';
+import { useAuthContext, useDrawerContext } from '../../contexts';
 interface IAppThemeProviderProps {
     children: React.ReactNode
 }
+
 export const MenuLateral: React.FC<IAppThemeProviderProps> = ({ children }) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'));
     
     const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+
+    const { logout } = useAuthContext();
     return (
         <>
             <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'permanent'} onClose={ toggleDrawerOpen }>
@@ -24,7 +27,7 @@ export const MenuLateral: React.FC<IAppThemeProviderProps> = ({ children }) => {
 
                     <Divider />
                     <Box flex={1}>
-                        <ListItemButton component="a" href="#simple-list">
+                        <ListItemButton component="a" onClick={logout}>
                             <IconButton aria-label="comment">
                                 <LogoutIcon />
                             </IconButton>
