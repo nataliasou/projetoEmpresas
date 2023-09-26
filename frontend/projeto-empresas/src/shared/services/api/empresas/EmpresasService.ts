@@ -26,7 +26,7 @@ const getAll = async (): Promise<TEmpresasTotal | Error> => {
         }
 
         return new Error('Erro ao listar as empresas.');
-    }catch(error){
+    } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao listar as empresas.');
     }
@@ -41,7 +41,7 @@ const getById = async (empresas_id: number): Promise<TEmpresasTotal | Error> => 
         }
 
         return new Error('Erro ao consultar a empresa.');
-    }catch(error){
+    } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao consultar a empresa.');
     }
@@ -49,14 +49,22 @@ const getById = async (empresas_id: number): Promise<TEmpresasTotal | Error> => 
 
 const create = async (dados: Omit<IEmpresa, 'empresas_id'>): Promise<number | Error> => {
     try {
-        const { data } = await Api.post<IEmpresa>('/empresas', dados);
+        const formData = new FormData();
+        formData.append('nome', dados.nome);
+        formData.append('cnpj', dados.cnpj);
+        formData.append('endereco', dados.endereco);
+        formData.append('telefone', dados.telefone);
+        formData.append('email', dados.email);
+        formData.append('site', dados.site);
+        formData.append('proprietario', dados.proprietario);
 
+        const { data } = await Api.post<IEmpresa>('/empresas', formData);
         if (data) {
             return data.empresas_id;
         }
 
         return new Error('Erro ao criar o cadastro da empresa.');
-    }catch(error){
+    } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao criar o cadastro da empresa.');
     }
@@ -64,9 +72,8 @@ const create = async (dados: Omit<IEmpresa, 'empresas_id'>): Promise<number | Er
 
 const update = async (empresas_id: number, dados: IEmpresa): Promise<void | Error> => {
     try {
-        console.log(dados);
         await Api.put(`/empresas/${empresas_id}`, dados);
-    } catch(error){
+    } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao atualizar o cadastro da empresa.');
     }
@@ -75,7 +82,7 @@ const update = async (empresas_id: number, dados: IEmpresa): Promise<void | Erro
 const deleteById = async (empresas_id: number): Promise<void | Error> => {
     try {
         await Api.delete(`/empresas/${empresas_id}`);
-    }catch(error){
+    } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao deletar o cadastro da empresa.');
     }

@@ -23,8 +23,6 @@ export const Principal: React.FC = () => {
                     alert(result.message);
                     return;
                 }
-
-                console.log(result);
                 setRows(result.data);
                 setTotalCount(result.totalCount);
             });
