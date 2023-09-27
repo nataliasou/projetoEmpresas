@@ -71,6 +71,7 @@ $ yarn add axios
 $ yarn add @unform/web @unform/core
 $ yarn add yup
 $ yarn add js-cookie
+$ yarn add --dev @types/js-cookie
 $ yarn install
 
 # Pronto o Frontend estará funcionando normalmente

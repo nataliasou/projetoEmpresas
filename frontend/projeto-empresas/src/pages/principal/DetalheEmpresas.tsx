@@ -24,7 +24,7 @@ const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
     nome: yup.string().required('Campo é obrigatório').min(4, 'É preciso ter no mínimo 4 caracteres.'),
     cnpj: yup.string().required('Campo é obrigatório').min(14, 'É preciso ter 14 caracteres.').max(14),
     endereco: yup.string().min(10, 'É preciso ter no mínimo 10 caracteres.').default(''),
-    telefone: yup.string().min(9, 'É preciso ter 9 caracteres DDD+Número.').max(9).default(''),
+    telefone: yup.string().min(11, 'É preciso ter 9 caracteres DDD+Número.').max(11).default(''),
     email: yup.string().email('Digite um email válido.').default(''),
     site: yup.string().url('Digite uma url válida').min(4, 'É preciso ter no mínimo 4 caracteres.').default(''),
     proprietario: yup.string().required('Campo é obrigatório').min(4, 'É preciso ter no mínimo 4 caracteres.'),

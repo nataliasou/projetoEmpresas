@@ -6,7 +6,7 @@ class Empresas extends Controller
 {
     public function index()
     {
-       // if ($this->authorization()) {
+        if ($this->authorization()) {
             $empresaModel = $this->model("Empresa");
             $empresasCadastradas = $empresaModel->buscarTodos();
 
@@ -30,12 +30,12 @@ class Empresas extends Controller
             ];
 
             echo json_encode($response, JSON_UNESCAPED_UNICODE);
-        //}
+        }
     }
 
     public function find()
     {
-        //if ($this->authorization()) {
+        if ($this->authorization()) {
             $urlParts = explode("/", $_SERVER["REQUEST_URI"]);
             $empresaId = isset($urlParts[3]) ? $urlParts[5] : null;
 
@@ -65,12 +65,12 @@ class Empresas extends Controller
                 http_response_code(404);
                 echo json_encode(["erro" => "Empresa não encontrada"]);
             }
-        //}
+        }
     }
 
     public function findPhoto()
     {
-       // if ($this->authorization()) {
+        if ($this->authorization()) {
             $urlParts = explode("/", $_SERVER["REQUEST_URI"]);
             $empresaId = isset($urlParts[3]) ? $urlParts[5] : null;
 
@@ -90,12 +90,12 @@ class Empresas extends Controller
                 http_response_code(404);
                 echo json_encode(["erro" => "Foto da empresa não encontrada"]);
             }
-       // }
+        }
     }
 
     public function store()
     {
-       // if ($this->authorization()) {
+        if ($this->authorization()) {
             $empresaModel = $this->model("Empresa");
 
             $nome = $_POST['nome'];
@@ -128,13 +128,13 @@ class Empresas extends Controller
                 http_response_code(201);
                 echo json_encode(["Sucesso" => "Empresa foi cadastrada com sucesso!"]);
             }
-       // }
+        }
     }
 
 
     public function update()
     {
-       // if ($this->authorization()) {
+        if ($this->authorization()) {
             $empresa = $this->getRequestBody();
 
             $urlParts = explode("/", $_SERVER["REQUEST_URI"]);
@@ -178,12 +178,12 @@ class Empresas extends Controller
                     echo json_encode(["erro" => "Não foi possível atualizar a empresa"]);
                 }
             }
-     //   }
+        }
     }
 
     public function delete()
     {
-       // if ($this->authorization()) {
+        if ($this->authorization()) {
             $urlParts = explode("/", $_SERVER["REQUEST_URI"]);
             $empresaId = isset($urlParts[3]) ? $urlParts[5] : null;
 
@@ -203,7 +203,7 @@ class Empresas extends Controller
                     echo json_encode(["erro" => "Não foi possível excluir a empresa"]);
                 }
             }
-      // }
+       }
     }
 
     private function authorization()

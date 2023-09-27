@@ -1,4 +1,4 @@
-//import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 import { Api } from '../axios-config';
 
@@ -13,16 +13,16 @@ const auth = async (email: string, senha: string): Promise<IAuth | Error> => {
             senha: senha,
         };
 
-        const response  = await Api.post<IAuth>('/auth', dados);
+        const response = await Api.post<IAuth>('/auth', dados);
 
         if (response.status >= 200) {
-           // const accessToken = response.data.accessToken;
-            //Cookies.set('APP_ACCESS_TOKEN', accessToken, { secure: true });
+            const accessToken = response.data.accessToken;
+            Cookies.set('APP_ACCESS_TOKEN', accessToken, { secure: true });
             return response.data;
         }
 
         if (response.status === 404) {
-            throw new Error('Usuário não encontrado.');
+            return new Error('Usuário não encontrado.');
         }
 
         return new Error('Erro de autenticação.');
